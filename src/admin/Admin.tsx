@@ -10,6 +10,7 @@ import {
   MailOutlined,
   MenuOutlined,
 } from '@ant-design/icons';
+import SideMenus from './Components/SideMenus';
 
 const { Header, Sider, Content } = Layout;
 
@@ -58,17 +59,7 @@ const AdminPanel = () => {
             background: 'rgba(255, 255, 255, 0.2)',
           }}
         /> */}
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['dashboard']}>
-          <Menu.Item key="dashboard" icon={<UserOutlined />}>
-            Dashboard
-          </Menu.Item>
-          <Menu.Item key="orders" icon={<MailOutlined />}>
-            Orders
-          </Menu.Item>
-          <Menu.Item key="products" icon={<BellOutlined />}>
-            Products
-          </Menu.Item>
-        </Menu>
+        <SideMenus />
       </Sider>
       <Layout>
       <Header style={{ background: '#fff', padding: 0 }}>
