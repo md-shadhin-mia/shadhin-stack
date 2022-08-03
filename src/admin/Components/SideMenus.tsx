@@ -24,8 +24,8 @@ function getItem(
 
 const items: MenuProps['items'] = [
     getItem('Profiles', 'profile', <ProfileOutlined />, [
-      getItem(<Link to={"/admin/"}></Link>, 'mkpf', <PlusCircleFilled/>),
-      getItem('Item 2', 'mklist', <PlusCircleFilled />),
+      getItem(<Link to={"/admin/profile-create"}>Create Profile</Link>, 'pro1', <PlusCircleFilled/>),
+      getItem(<Link to={"/admin/profile-list"}>Create Profile</Link>, 'pro2', <PlusCircleFilled />),
     ]),
   
     getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [

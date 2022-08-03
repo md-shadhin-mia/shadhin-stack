@@ -74,53 +74,56 @@ const ProfileForm = () => {
   };
 
   return (
-    <Form layout="vertical" onFinish={handleSubmit}>
-      <Form.Item label="Avatar Image">
-        <Form.Item name="avatarImage" noStyle rules={[{ required: true, message: 'Please upload an avatar image' }]}>
-          <Upload
-            name="avatarImage"
-            beforeUpload={handleUploadAvatar}
-            showUploadList={false}
-            accept="image/*"
-          >
-            <Button icon={<UploadOutlined />} loading={loading}>
-              Upload Avatar Image
-            </Button>
-          </Upload>
+    <div style={{margin:"16px"}}>
+      <Form layout="vertical" onFinish={handleSubmit} style={{width:"100%"}}>
+        <Form.Item label="Avatar Image">
+          <Form.Item name="avatarImage" noStyle rules={[{ required: true, message: 'Please upload an avatar image' }]}>
+            <Upload
+              name="avatarImage"
+              beforeUpload={handleUploadAvatar}
+              showUploadList={false}
+              accept="image/*"
+            >
+              <Button icon={<UploadOutlined />} loading={loading}>
+                Upload Avatar Image
+              </Button>
+            </Upload>
+          </Form.Item>
         </Form.Item>
-      </Form.Item>
-      <Form.Item label="Cover Image">
-        <Form.Item name="coverImage" noStyle rules={[{ required: true, message: 'Please upload a cover image' }]}>
-          <Upload
-            name="coverImage"
-            beforeUpload={handleUploadCover}
-            showUploadList={false}
-            accept="image/*"
-          >
-            <Button icon={<UploadOutlined />} loading={loading}>
-              Upload Cover Image
-            </Button>
-          </Upload>
+        <Form.Item label="Cover Image">
+          <Form.Item name="coverImage" noStyle rules={[{ required: true, message: 'Please upload a cover image' }]}>
+            <Upload
+              name="coverImage"
+              beforeUpload={handleUploadCover}
+              showUploadList={false}
+              accept="image/*"
+            >
+              <Button icon={<UploadOutlined />} loading={loading}>
+                Upload Cover Image
+              </Button>
+            </Upload>
+          </Form.Item>
         </Form.Item>
-      </Form.Item>
-      <Form.Item label="Bio" name="bio" rules={[{ required: true, message: 'Please enter your bio' }]}>
-        <Input.TextArea rows={4} />
-      </Form.Item>
-      <Form.Item label="About" name="about" rules={[{ required: true, message: 'Please enter information about yourself' }]}>
-        <Input.TextArea rows={4} />
-      </Form.Item>
-      <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please enter your phone number' }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please enter your email address' }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item label="Bio" name="bio" rules={[{ required: true, message: 'Please enter your bio' }]}>
+          <Input.TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="About" name="about" rules={[{ required: true, message: 'Please enter information about yourself' }]}>
+          <Input.TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please enter your phone number' }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please enter your email address' }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" loading={loading}>
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+    
   );
 };
 

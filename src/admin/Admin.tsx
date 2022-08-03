@@ -49,7 +49,7 @@ const AdminPanel = () => {
 
   
   return (
-    <Layout style={{ minHeight: '100vh', minWidth:"100vw" }}>
+    <Layout style={{ minHeight: '100vh', minWidth:"100vw", maxWidth:"100vw", overflowX:"hidden" }}>
       <Sider
         breakpoint='md'
         theme='light'>
@@ -95,8 +95,10 @@ const AdminPanel = () => {
             </div>
           </div>
         </Header>
-        <Content style={{ margin: '16px' }}>
-          <Outlet />
+        <Content style={{ padding:"8px", width:"100%" }}>
+          <div>
+            <Outlet />
+          </div>
         </Content> 
       </Layout>
     </Layout>
