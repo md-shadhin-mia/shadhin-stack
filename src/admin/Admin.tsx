@@ -11,6 +11,7 @@ import {
   MenuOutlined,
 } from '@ant-design/icons';
 import SideMenus from './Components/SideMenus';
+import { Outlet } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 
@@ -51,7 +52,7 @@ const AdminPanel = () => {
     <Layout style={{ minHeight: '100vh', minWidth:"100vw" }}>
       <Sider
         breakpoint='md'
-        collapsedWidth={0}>
+        theme='light'>
         {/* <div
           style={{
             height: '32px',
@@ -95,7 +96,7 @@ const AdminPanel = () => {
           </div>
         </Header>
         <Content style={{ margin: '16px' }}>
-          <h1>here is main content</h1>
+          <Outlet />
         </Content> 
       </Layout>
     </Layout>

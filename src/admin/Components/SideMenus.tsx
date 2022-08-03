@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, MailOutlined, SettingOutlined, ProfileOutlined, PlusCircleFilled } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -22,9 +23,9 @@ function getItem(
 }
 
 const items: MenuProps['items'] = [
-    getItem('Navigation One', 'sub1', <MailOutlined />, [
-      getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-      getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+    getItem('Profiles', 'profile', <ProfileOutlined />, [
+      getItem(<Link to={"/admin/"}></Link>, 'mkpf', <PlusCircleFilled/>),
+      getItem('Item 2', 'mklist', <PlusCircleFilled />),
     ]),
   
     getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
@@ -50,6 +51,7 @@ function SideMenus() {
     return (
         <Menu
             items={items}
+            mode='inline'
         />
     );
 }
