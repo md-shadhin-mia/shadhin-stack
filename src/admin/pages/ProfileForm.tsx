@@ -8,9 +8,12 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/firestore';
 import { RcFile } from 'antd/es/upload';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileForm = () => {
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (values:any) => {
     setLoading(true);
@@ -18,12 +21,13 @@ const ProfileForm = () => {
     try {
       const storage = getStorage();
       const storageRef = ref(storage);
-      const avatarImageRef = ref(storageRef, `avatar/${values.avatarImage.name}`);
-      const coverImageRef = ref(storageRef, `cover/${values.coverImage.name}`);
+      console.log({n1:values.avatarImage, n2:values.coverImage});
+      const avatarImageRef = ref(storageRef, `avatar/${values.avatarImage.file.name}`);
+      const coverImageRef = ref(storageRef, `cover/${values.coverImage.file.name}`);
 
       await Promise.all([
-        uploadBytes(avatarImageRef, values.avatarImage),
-        uploadBytes(coverImageRef, values.coverImage),
+        uploadBytes(avatarImageRef, values.avatarImage.file),
+        uploadBytes(coverImageRef, values.coverImage.file),
       ]);
 
       const avatarImageUrl = await getDownloadURL(avatarImageRef);
@@ -32,16 +36,18 @@ const ProfileForm = () => {
       const profileData = {
         avatarImage: avatarImageUrl,
         coverImage: coverImageUrl,
+        name:values.name,
         bio: values.bio,
         about: values.about,
         phone: values.phone,
         email: values.email,
       };
-
+      console.log(profileData)
       const db = getFirestore();
       await addDoc(collection(db, 'profiles'), profileData);
 
       message.success('Profile created successfully!');
+      navigate("/admin/profile-list")
     } catch (error) {
       console.error('Error creating profile:', error);
       message.error('An error occurred while creating the profile.');
@@ -49,6 +55,7 @@ const ProfileForm = () => {
       setLoading(false);
     }
   };
+
   const handleUploadAvatar = (file: RcFile) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
@@ -58,7 +65,8 @@ const ProfileForm = () => {
     if (!isLt2M) {
         message.error('Image must smaller than 2MB!');
     }
-    return isJpgOrPng && isLt2M;
+
+    return false;
   };
 
   const handleUploadCover = (file: RcFile) => {
@@ -70,7 +78,8 @@ const ProfileForm = () => {
     if (!isLt2M) {
         message.error('Image must smaller than 2MB!');
     }
-    return isJpgOrPng && isLt2M;
+
+    return false;
   };
 
   return (
@@ -82,6 +91,7 @@ const ProfileForm = () => {
               name="avatarImage"
               beforeUpload={handleUploadAvatar}
               showUploadList={false}
+              action={undefined}
               accept="image/*"
             >
               <Button icon={<UploadOutlined />} loading={loading}>
@@ -96,6 +106,7 @@ const ProfileForm = () => {
               name="coverImage"
               beforeUpload={handleUploadCover}
               showUploadList={false}
+              action={undefined}
               accept="image/*"
             >
               <Button icon={<UploadOutlined />} loading={loading}>
@@ -103,6 +114,9 @@ const ProfileForm = () => {
               </Button>
             </Upload>
           </Form.Item>
+        </Form.Item>
+        <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please enter your profile Name' }]}>
+          <Input />
         </Form.Item>
         <Form.Item label="Bio" name="bio" rules={[{ required: true, message: 'Please enter your bio' }]}>
           <Input.TextArea rows={4} />
