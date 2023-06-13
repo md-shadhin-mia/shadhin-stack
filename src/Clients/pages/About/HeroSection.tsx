@@ -4,6 +4,11 @@ import {Row, Col, Typography, Avatar, Button, Space} from 'antd';
 import { RightCircleOutlined, FileTextOutlined } from '@ant-design/icons';
 import {Content} from "antd/lib/layout/layout";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import {PDFDownloadLink} from "@react-pdf/renderer";
+import Resume from "./Resume.tsx";
+import ResumeViewer from "./ResumeViewer.tsx";
+import Resume2 from "./Resume2.tsx";
+import ResumeAdvance from "./ResumeAdvance";
 
 // Define a functional component named AboutMe
 const HeroSection = () => {
@@ -27,7 +32,15 @@ const HeroSection = () => {
                         <Typography.Paragraph className="bio mb-4">{bio}</Typography.Paragraph>
                         <Space>
                             <Button type="primary" icon={<RightCircleOutlined />} href={portfolioUrl} >View Portfolio</Button>
-                            <Button type="default" icon={<FileTextOutlined />} href={resumeUrl} >View Resume</Button>
+                            <ResumeViewer label={"View Resume 1"}>
+                                <Resume />
+                            </ResumeViewer>
+                            <ResumeViewer label={"View Resume 2"}>
+                                <Resume2 />
+                            </ResumeViewer>
+                            <ResumeViewer label={"Advance Resume"}>
+                                <ResumeAdvance />
+                            </ResumeViewer>
                         </Space>
                     </Col>
                     <Col lg={8} md={12} span={24} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
