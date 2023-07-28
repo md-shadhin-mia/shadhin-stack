@@ -12,6 +12,7 @@ import {
 } from '@ant-design/icons';
 import SideMenus from './Components/SideMenus';
 import { Outlet } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
 
 const { Header, Sider, Content } = Layout;
 
@@ -32,6 +33,15 @@ const AvatarMenusItem: MenuProps['items'] =[
 
 
 const AdminPanel = () => {
+  const auth = getAuth();
+
+  const firebaseSignOut = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
 
   const menu = (
     <Menu>
@@ -41,7 +51,7 @@ const AdminPanel = () => {
       <Menu.Item key="settings">
         <SettingOutlined /> Settings
       </Menu.Item>
-      <Menu.Item key="logout">
+      <Menu.Item key="logout" onClick={firebaseSignOut}>
         <LogoutOutlined /> Sign Out
       </Menu.Item>
     </Menu>

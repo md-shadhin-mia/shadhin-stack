@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Suspense fallback={<LoadingPage/>}>
         <Routes>
-          <Route path="admin/*" element={<LazyAdminRoutes />}/>
+          <Route path="admin/*" element={user?<LazyAdminRoutes />:(loading?<LoadingPage />:<Navigate to={'/login'} />)}/>
           <Route path='login' element={user?<Navigate to={'/admin'} />:(loading?<LoadingPage />:<LoginPage />)}/>
         </Routes>
       </Suspense>

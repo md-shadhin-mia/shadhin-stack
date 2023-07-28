@@ -26,7 +26,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width:"100vw" }}>
       <Form
         name="loginForm"
         initialValues={{ remember: true }}

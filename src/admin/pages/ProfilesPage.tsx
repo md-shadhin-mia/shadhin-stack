@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 
 interface Profile {
   id: string;
+  avatarImage: string;
   name: string;
   email: string;
+  phone: string;
 }
 
 const ProfilesPage: React.FC = () => {
@@ -48,7 +50,8 @@ const ProfilesPage: React.FC = () => {
       const filteredProfiles = profiles.filter(
         (profile) =>
           profile.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          profile.email.toLowerCase().includes(keyword.toLowerCase())
+          profile.email.toLowerCase().includes(keyword.toLowerCase()) || 
+          profile.phone.toLowerCase().includes(keyword.toLowerCase())
       );
       setProfiles(filteredProfiles);
     } else {
@@ -83,8 +86,14 @@ const ProfilesPage: React.FC = () => {
   };
 
   const columns = [
+    {title:"avater",  key:"avatarImage", 
+    render: (text: string, record: Profile) => {
+      return <img src={record.avatarImage} style={{ width: 36, height: 36, borderRadius: 50 }}/>
+    }  
+  },
     { title: 'Name', dataIndex: 'name', key: 'name' },
     { title: 'Email', dataIndex: 'email', key: 'email' },
+    {title: "Phone", dataIndex: "phone", key: "phone"},
     {
       title: 'Actions',
       key: 'actions',
