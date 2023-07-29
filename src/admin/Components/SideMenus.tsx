@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined, ProfileOutlined, PlusCircleFilled } from '@ant-design/icons';
+import { AppstoreOutlined, MailOutlined, SettingOutlined, ProfileOutlined, PlusCircleFilled, UserAddOutlined, UserSwitchOutlined} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
@@ -24,8 +24,9 @@ function getItem(
 
 const items: MenuProps['items'] = [
     getItem('Profiles', 'profile', <ProfileOutlined />, [
-      getItem(<Link to={"/admin/profile-create"}>Create Profile</Link>, 'pro1', <PlusCircleFilled/>),
-      getItem(<Link to={"/admin/profile-list"}>Profile List</Link>, 'pro2', <PlusCircleFilled />),
+      getItem(<Link to={"/admin/profile-create"}>Create Profile</Link>, 'pro1', <UserAddOutlined/>),
+      getItem(<Link to={"/admin/profile-list"}>Profile List</Link>, 'pro2', <UserSwitchOutlined />),
+      getItem(<Link to={"/admin/active-profile"}>Active Profile</Link>, "pro3", <UserSwitchOutlined />)
     ]),
   
     getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [

@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ProfileForm = () => {
   const [loading, setLoading] = useState(false);
-
+  const [avaterSelect, setAvaterSelect] = useState<RcFile|null>(null);
   const navigate = useNavigate()
 
   const handleSubmit = async (values:any) => {
@@ -90,8 +90,9 @@ const ProfileForm = () => {
             <Upload
               name="avatarImage"
               beforeUpload={handleUploadAvatar}
-              showUploadList={false}
+              showUploadList={true}
               action={undefined}
+              maxCount={1}
               accept="image/*"
             >
               <Button icon={<UploadOutlined />} loading={loading}>
@@ -105,8 +106,9 @@ const ProfileForm = () => {
             <Upload
               name="coverImage"
               beforeUpload={handleUploadCover}
-              showUploadList={false}
+              showUploadList={true}
               action={undefined}
+              maxCount={1}
               accept="image/*"
             >
               <Button icon={<UploadOutlined />} loading={loading}>
