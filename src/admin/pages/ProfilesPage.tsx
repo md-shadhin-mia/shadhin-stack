@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, Table, Space, message, Modal, Row, Col } from 'antd';
-import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import { getFirestore, collection, getDocs, query, where, deleteDoc, doc } from 'firebase/firestore';
-import { DocumentData } from 'firebase/firestore';
+import {  EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { getFirestore, collection, getDocs, query, deleteDoc, doc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 
-interface Profile {
-  id: string;
-  avatarImage: string;
-  name: string;
-  email: string;
-  phone: string;
-}
+
 
 const ProfilesPage: React.FC = () => {
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -44,7 +37,7 @@ const ProfilesPage: React.FC = () => {
     }
   };
 
-  const handleSearch = (keyword: String): void => {
+  const handleSearch = (keyword: string): void => {
 
     if (keyword) {
       const filteredProfiles = profiles.filter(
@@ -99,8 +92,12 @@ const ProfilesPage: React.FC = () => {
       key: 'actions',
       render: (_: any, record: Profile): React.ReactNode => (
         <Space>
-          <Button type="primary" shape="circle" icon={<EditOutlined />} onClick={() => handleEdit(record.id)} />
-          <Button type="primary" shape="circle" danger icon={<DeleteOutlined />} onClick={() => handleDelete(record.id)} />
+          
+          <Link to={`/admin/profile-edit/${record.id}`} >
+              <Button type="primary" shape="circle" icon={<EditOutlined />} />
+          </Link>
+        
+          <Button type="primary" shape="circle" danger icon={<DeleteOutlined />} onClick={() => handleDelete(record.id as string)} />
         </Space>
       ),
     },
@@ -111,9 +108,14 @@ const ProfilesPage: React.FC = () => {
       <Row>
         <Col span={8}><Input.Search placeholder="Search"  style={{ width: 200 }} onSearch={handleSearch}/></Col>
         <Col offset={8} span={8}>
-        <Button type="primary">
-            <Link to="/admin/profile-create">New Profile</Link>
-        </Button>
+        <div style={{ textAlign: 'right' }}>
+          <Button type="default">
+
+              <Link to="/admin/profile-create">
+                <PlusOutlined/>
+                New Profile</Link>
+          </Button>
+        </div>
         </Col>
       </Row>
       <Table columns={columns} dataSource={profiles} loading={loading} rowKey="id" />

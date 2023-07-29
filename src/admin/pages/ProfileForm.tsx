@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Upload, message } from 'antd';
+import { Form, Input, Button, Upload, message, Image } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/firestore';
 import { RcFile } from 'antd/es/upload';
 import { useNavigate } from 'react-router-dom';
 
 const ProfileForm = () => {
-  const [loading, setLoading] = useState(false);
-  const [avaterSelect, setAvaterSelect] = useState<RcFile|null>(null);
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate()
 
   const handleSubmit = async (values:any) => {
@@ -56,6 +54,12 @@ const ProfileForm = () => {
     }
   };
 
+  /**
+   * Handles the upload of an avatar file.
+   *
+   * @param {RcFile} file - The file to be uploaded.
+   * @return {boolean} Returns false if the file is not a JPG or PNG or if it exceeds 2MB in size.
+   */
   const handleUploadAvatar = (file: RcFile) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
@@ -82,6 +86,7 @@ const ProfileForm = () => {
     return false;
   };
 
+
   return (
     <div style={{margin:"16px"}}>
       <Form layout="vertical" onFinish={handleSubmit} style={{width:"100%"}}>
@@ -94,11 +99,14 @@ const ProfileForm = () => {
               action={undefined}
               maxCount={1}
               accept="image/*"
+              listType='picture'
             >
               <Button icon={<UploadOutlined />} loading={loading}>
                 Upload Avatar Image
               </Button>
+              {/* {avaterSelect&&<Image src={avaterSelect} width={"100%"} />} */}
             </Upload>
+            
           </Form.Item>
         </Form.Item>
         <Form.Item label="Cover Image">
@@ -109,6 +117,7 @@ const ProfileForm = () => {
               showUploadList={true}
               action={undefined}
               maxCount={1}
+              listType='picture'
               accept="image/*"
             >
               <Button icon={<UploadOutlined />} loading={loading}>
