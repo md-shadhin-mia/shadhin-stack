@@ -1,9 +1,11 @@
 import { Spin } from "antd";
-
-function LoadingPage() {
+type Props={
+    fullScreen?:boolean
+}
+function LoadingPage(props:Props={fullScreen:false}) {
     return <div style={{
-        height:"100vh",
-        width:"100vw",
+        height:props.fullScreen?"100vh":undefined,
+        width:props.fullScreen? "100vw":"100%",
         display:"flex",
         justifyContent:"center",
         alignItems:"center"
@@ -13,3 +15,5 @@ function LoadingPage() {
 }
 
 export default LoadingPage;
+
+//default props

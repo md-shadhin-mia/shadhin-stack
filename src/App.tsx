@@ -12,10 +12,10 @@ function App() {
   const {user, loading} = useAuthentication();
   return (
     <BrowserRouter>
-      <Suspense fallback={<LoadingPage/>}>
+      <Suspense fallback={<LoadingPage fullScreen/>}>
         <Routes>
-          <Route path="admin/*" element={user?<LazyAdminRoutes />:(loading?<LoadingPage />:<Navigate to={'/login'} />)}/>
-          <Route path='login' element={user?<Navigate to={'/admin'} />:(loading?<LoadingPage />:<LoginPage />)}/>
+          <Route path="admin/*" element={user?<LazyAdminRoutes />:(loading?<LoadingPage fullScreen/>:<Navigate to={'/login'} />)}/>
+          <Route path='login' element={user?<Navigate to={'/admin'} />:(loading?<LoadingPage fullScreen/>:<LoginPage />)}/>
         </Routes>
       </Suspense>
     </BrowserRouter>

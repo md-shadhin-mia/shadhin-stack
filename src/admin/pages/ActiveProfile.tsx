@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
-import { collection, getDocs, getFirestore, query } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc } from 'firebase/firestore';
 import { Card, Avatar, message, Button } from 'antd';
+import LoadingPage from '../../Component/LoadingPage';
+import ProfileCard from './component/ProfileCard';
 
 const { Meta } = Card;
 
@@ -19,6 +21,8 @@ interface Profile {
 const ActiveProfile: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [profiles, setProfiles] = useState<Profile[]>([]);
+  const [activeProfileId, setActiveProfileId] = useState<string>();
+
 
   const fetchProfiles = async (): Promise<void> => {
     setLoading(true);
@@ -30,8 +34,16 @@ const ActiveProfile: React.FC = () => {
 
       const snapshot = await getDocs(profilesQuery);
       const profilesData: Profile[] = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Profile));
-
+    
       setProfiles(profilesData);
+
+      const activeProfileCollection = collection(db, 'active-profile');
+      const activeProfileDocRef = doc(activeProfileCollection, "activeProfileDocument");
+      const activeProfileDoc = await getDoc(activeProfileDocRef);
+      if(activeProfileDoc.exists()){
+        const activeProfileId = activeProfileDoc.data().profileId;
+        setActiveProfileId(activeProfileId);
+      }
     } catch (error) {
       console.error('Error fetching profiles:', error);
       message.error('Failed to fetch profiles.');
@@ -44,36 +56,34 @@ const ActiveProfile: React.FC = () => {
     fetchProfiles();
   }, []);
 
+  const handleActiveProfile = async (profileId: string): Promise<void> => {
+    
+    try {
+      const db = getFirestore();
+      const activeProfileCollection = collection(db, 'active-profile');
+      const activeProfileDocRef = doc(activeProfileCollection, "activeProfileDocument");
+      await setDoc(activeProfileDocRef,{profileId:profileId});
+      setActiveProfileId(profileId);
+      message.success('Active Profile');
+    } catch (error) {
+      console.log(error);
+      message.error('Failed to Active Profile');
+    }
+
+  }
+
   if (loading) {
     // You can show a loading state or return null if the data is not available yet
-    return null;
+    return <LoadingPage />;
   }
 
   return (
     <div>
       {profiles.map((profile) => (
-        <Card
-          key={profile.id}
-          cover={<img alt="Profile Cover" src={profile.coverImage} />}
-          style={{ width: 300, margin: 'auto', marginBottom: 20 }}
-        >
-          <Meta
-            avatar={<Avatar src={profile.avatarImage} />}
-            title={profile.name}
-            description={profile.bio}
+        <ProfileCard profile={profile}
+         handleActiveProfile={handleActiveProfile}
+          activated={activeProfileId === profile.id}
           />
-          <div style={{ marginTop: 20 }}>
-            <strong>About:</strong>
-            <p>{profile.about}</p>
-            <strong>Email:</strong>
-            <p>{profile.email}</p>
-            <strong>Phone:</strong>
-            <p>{profile.phone}</p>
-            <div style={{textAlign:"center"}}>
-              <Button type='primary' shape='round'>Active</Button>
-            </div>
-          </div>
-        </Card>
       ))}
     </div>
   );
