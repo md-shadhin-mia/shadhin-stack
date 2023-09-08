@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import LoadingPage from './Component/LoadingPage'
 import useAuthentication from './hooks/useAuthentication'
 import LoginPage from './auth/LoginPage'
+import {Clients} from "./Clients/Clients.tsx";
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="admin/*" element={user?<LazyAdminRoutes />:(loading?<LoadingPage fullScreen/>:<Navigate to={'/login'} />)}/>
           <Route path='login' element={user?<Navigate to={'/admin'} />:(loading?<LoadingPage fullScreen/>:<LoginPage />)}/>
+          <Route path="/*" element={<Clients />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

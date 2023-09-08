@@ -6,7 +6,7 @@ import {
   UserSwitchOutlined,
 } from "@ant-design/icons";
 
-import { MdDocumentScanner, MdLocalFireDepartment } from "react-icons/md";
+import { MdDocumentScanner, MdOutlineFilePresent } from "react-icons/md";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
@@ -69,9 +69,9 @@ const items: MenuProps["items"] = [
       <FileAddOutlined />
     ),
     getItem(
-      <Link to={"/admin/resume-configure"}>Generate</Link>,
+      <Link to={"/admin/resume-genarate"}>Generate</Link>,
       "generate",
-      <MdLocalFireDepartment />
+      < MdOutlineFilePresent/>
     ),
   ]),
 
