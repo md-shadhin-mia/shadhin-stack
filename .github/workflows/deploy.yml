@@ -22,7 +22,7 @@ jobs:
       run: yarn install
 
     - name: Build React app
-      run: npm run build
+      run: yarn build
 
     - name: Upload to FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0
