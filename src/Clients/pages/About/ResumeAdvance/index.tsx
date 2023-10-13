@@ -33,7 +33,7 @@ type SvgImageProps = {
     backgroundColor?: string
 }
 export function ReactIcon(props: SvgImageProps) {
-    return <Image src={getPNGBlob(props.icon, props.height, props.width, props.color, props.backgroundColor)} {...props} style={{height: props.height, width: props.width, padding:500 }}  />
+    return <Image src={getPNGBlob(props.icon, props.height, props.width, props.color, props.backgroundColor)} {...props} style={{height: props.height, width: props.width }}  />
 }
 //register font
 

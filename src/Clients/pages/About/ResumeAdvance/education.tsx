@@ -53,7 +53,7 @@ function Education(){
 
     return (<View style={{width:"100%", }}>
             <View style={styles.subheader}>
-                <Heading size={"h1"}>Project</Heading>
+                <Heading size={"h4"}>Education</Heading>
             </View>
 
             <View >

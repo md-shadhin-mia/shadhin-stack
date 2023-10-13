@@ -2,6 +2,7 @@ import {View, Text, StyleSheet} from "@react-pdf/renderer";
 import {ReactIcon} from "./index.tsx";
 import {RiRadioButtonLine} from "react-icons/ri";
 import {IoBriefcase} from "react-icons/io5";
+import Heading from "./components/Heading.tsx";
 
 
 const styles = StyleSheet.create({
@@ -54,7 +55,7 @@ function Experince(){
     return (
        <View style={{width:"100%", }}>
            <View style={styles.subheader}>
-               <Text><ReactIcon height={16} width={16} icon={IoBriefcase} color="#61dbfb" /> Experience:</Text>
+               <Heading size="h4" icon={IoBriefcase}> Experience</Heading>
            </View>
 
            <View style={{borderLeft:"1 dotted #000000",}}>

@@ -39,12 +39,7 @@ function Objective(){
     return (
         <View style={{width:"100%"}}>
             <View style={styles.subheader}>
-               <Heading size={"h1"} icon={FaHome}>Objective</Heading>
-               <Heading size={"h3"}  icon={FaHome}>Objective</Heading>
-               <Heading size={"h6"}  icon={FaHome}>Objective</Heading>
-                <Heading size={"d1"}  icon={FaHome}>Objective</Heading>
-                <Heading size={"d3"}  icon={FaHome}>Objective</Heading>
-                <Heading size={"d6"}  icon={FaHome}>Objective</Heading>
+               <Heading size={"h2"} icon={FaHome}> Objective</Heading>
             </View>
             <Text style={styles.text}>
                 Dedicated and highly skilled Backend Developer with [X] years of experience in Java development. Adept at designing, implementing, and maintaining robust and scalable server-side applications. Seeking an opportunity to contribute my expertise in Java and backend development to a dynamic and innovative team.
