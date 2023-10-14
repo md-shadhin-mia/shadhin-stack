@@ -53,7 +53,7 @@ export function ClientLayout(props: Props) {
             </Sider>
             <Layout style={{marginLeft: screen.lg ? 280 : 0}}>
                 {!screen.lg && <Header style={{padding: 0, background: colorBgContainer}}>
-                    <Button type={"ghost"} onClick={() => setCollapsed(!collapsed)}><MenuUnfoldOutlined/></Button>
+                    <Button type="default" onClick={() => setCollapsed(!collapsed)}><MenuUnfoldOutlined/></Button>
                 </Header>}
                 <Content>
                     <Outlet />
