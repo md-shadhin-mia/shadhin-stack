@@ -9,11 +9,9 @@ import {SiderNavInfo} from "./SiderNavInfo.tsx";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-type Props = {
 
-};
 
-export function ClientLayout(props: Props) {
+export function ClientLayout() {
 
     const [collapsed, setCollapsed] = React.useState(false);
     const {

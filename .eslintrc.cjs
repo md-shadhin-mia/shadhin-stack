@@ -12,5 +12,6 @@ module.exports = {
     'react-refresh/only-export-components': 'warn',
     'no-unused-vars': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/ban-types': 'warn',
   },
 }
