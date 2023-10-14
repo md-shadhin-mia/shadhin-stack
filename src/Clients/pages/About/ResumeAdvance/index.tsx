@@ -1,15 +1,13 @@
 
 import React, {ElementType} from 'react';
 import {Document, Page, Text, View, StyleSheet, Image, Font} from '@react-pdf/renderer';
-import logo from './../../../assets/react.svg';
-import {FaHome} from "react-icons/fa";
 import getPNGBlob from "../../../../Utils/GetPNGBlob.tsx";
 import Header from "./header.tsx";
 import Body from "./body.tsx";
 import ArianaVioleta from "../../../../assets/fonts/ArianaVioleta-dz2K.ttf";
 import OpenSansRegular from "../../../../assets/fonts/open-sans/OpenSans-Regular.ttf";
 import OpenSansBold from "../../../../assets/fonts/open-sans/OpenSans-Bold.ttf";
-import OpenSansSemiBold from "../../../../assets/fonts/open-sans/OpenSans-SemiBold.ttf";
+import OpenSansSemiBold from "../../../../assets/fonts/open-sans/OpenSans-Semibold.ttf";
 
 
 
