@@ -31,4 +31,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ # Change this to your desired path on your local machine
-        server-dir: /htdocs # Change this to your desired path on the FTP server
+        server-dir: /htdocs/ # Change this to your desired path on the FTP server
