@@ -7,7 +7,7 @@ import {SiPython, SiDjango, SiMysql, SiAmazonaws, SiRedis,
     SiSpringboot, SiNginx, SiApachemaven,
     SiGit, SiJenkins, SiDocker,SiKubernetes,
     SiElasticsearch, SiJirasoftware, SiCloudways, SiBandrautomation,
-} from "react-icons/Si";
+} from "react-icons/si";
 import {Content} from "antd/lib/layout/layout";
 type Skill = {name: string, icon: JSX.Element, description: string};
 // Define an array of frameworks and technologies with name, icon and description properties
