@@ -6,6 +6,7 @@ import ActiveProfile from "./pages/ActiveProfile";
 import ProfileEditForm from "./pages/ProfileEditForm";
 import ResumeConfigure from "./pages/ResumeConfigure";
 import ResumeGenerate from "./pages/ResumeGenerate";
+import ResumeCreator from "./pages/ResumeCreator.tsx";
 
 function AdminRoutes() {
     return (
@@ -17,7 +18,9 @@ function AdminRoutes() {
                 <Route path="profile-edit/:id" element={<ProfileEditForm/>}/>
                 <Route path="active-profile" element={<ActiveProfile />} />
                 <Route path="resume-configure" element={<ResumeConfigure />} />
+                <Route path="resume-creator" element={<ResumeCreator />} />
                 <Route path="resume-genarate" element={<ResumeGenerate />} />
+
             </Route>
         </Routes>
     )
