@@ -3,6 +3,7 @@ import {ReactIcon} from "./index.tsx";
 import {RiRadioButtonLine} from "react-icons/ri";
 import {IoBriefcase} from "react-icons/io5";
 import Heading from "./components/Heading.tsx";
+import data from "../../data.tsx";
 
 
 const styles = StyleSheet.create({
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     },
     timelineContainer: {
         flexDirection: 'row',
-        marginBottom: 20,
+        marginBottom: 8,
     },
     timelineIcon: {
         fontSize: 11,
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 11,
-        marginBottom: 5,
+        marginBottom: 2,
     },
     title: {
         fontSize: 11,
@@ -36,22 +37,22 @@ const styles = StyleSheet.create({
     }
 });
 function Experince(){
-    const experienceData = [
-        {
-            icon: RiRadioButtonLine,
-            title: 'Software Developer',
-            company: 'Company A',
-            date: 'June 20XX - Present',
-            description: 'Your experience details go here.',
-        },
-        {
-            icon: RiRadioButtonLine,
-            title: 'Frontend Developer',
-            company: 'Company B',
-            date: 'May 20XX - June 20XX',
-            description: 'More experience details go here.',
-        },
-    ];
+    // const experienceData = [
+    //     {
+    //         icon: RiRadioButtonLine,
+    //         title: 'Software Developer',
+    //         company: 'Company A',
+    //         date: 'June 20XX - Present',
+    //         description: 'Your experience details go here.',
+    //     },
+    //     {
+    //         icon: RiRadioButtonLine,
+    //         title: 'Frontend Developer',
+    //         company: 'Company B',
+    //         date: 'May 20XX - June 20XX',
+    //         description: 'More experience details go here.',
+    //     },
+    // ];
     return (
        <View style={{width:"100%", }}>
            <View style={styles.subheader}>
@@ -59,17 +60,18 @@ function Experince(){
            </View>
 
            <View style={{borderLeft:"1 dotted #000000",}}>
-            {experienceData.map((experience, index) => (
+            {data.experience.map((experience, index) => (
                 <View style={styles.timelineContainer} key={index}>
                     <Text style={styles.timelineIcon}>
-                        <ReactIcon height={10} width={10} icon={experience.icon} color="#000000" backgroundColor="#fff" />
+                        <ReactIcon height={10} width={10} icon={RiRadioButtonLine} color="#000000" backgroundColor="#fff" />
                     </Text>
                     <View style={styles.timelineContent}>
-                        <Text style={styles.title}>
-                            {experience.title} at {experience.company}
-                        </Text>
-                        <Text style={styles.text}>{experience.date}</Text>
-                        <Text style={styles.text}>{experience.description}</Text>
+                        <View style={{flexDirection:"row"}}>
+                            <Heading size="h6" >{experience.title} | </Heading>
+                            <Heading size="d6" >{experience.company} </Heading>
+                        </View>
+                        <Text style={styles.text}>{experience.from} - {experience.to}</Text>
+                        <Text style={styles.text}>{experience.responsibilities}</Text>
                     </View>
                 </View>
             ))}</View>

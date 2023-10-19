@@ -3,6 +3,7 @@ import {ReactIcon} from "./index.tsx";
 import {FaCode} from "react-icons/fa";
 import {IoIosSchool} from "react-icons/io";
 import Heading from "./components/Heading.tsx";
+import data from "../../data.tsx";
 
 
 const styles = StyleSheet.create({
@@ -53,21 +54,21 @@ function Education(){
 
     return (<View style={{width:"100%", }}>
             <View style={styles.subheader}>
-                <Heading size={"h4"}>Education</Heading>
+                <Heading size={"h4"} icon={IoIosSchool}> Education</Heading>
             </View>
 
             <View >
-                {educationData.map((education, index) => (
+                {data.education.map((education, index) => (
                     <View style={styles.timelineContainer} key={index}>
                         <Text style={styles.timelineIcon}>
-                            <ReactIcon height={10} width={10} icon={education.icon} color="#000000" backgroundColor="#fff" />
+                            <ReactIcon height={10} width={10} icon={IoIosSchool} color="#000000" backgroundColor="#fff" />
                         </Text>
                         <View style={styles.timelineContent}>
                             <Text style={styles.text}>
-                                {education.degree} at {education.school}
+                                {education.degree} at {education.institution}
                             </Text>
-                            <Text style={styles.text}>{education.date}</Text>
-                            <Text style={styles.text}>{education.description}</Text>
+                            <Text style={styles.text}>{education.from} - {education.to}</Text>
+                            <Text style={styles.text}>GPA: {education.gpa}</Text>
                         </View>
                     </View>
                 ))}</View>

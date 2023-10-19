@@ -62,7 +62,7 @@ const data ={
             fieldOfStudy: "Com",
             from: "Jan 1 2016",
             to: "Jan 1 2018",
-            gpa: "3.69 out of 4.0",
+            gpa: "4.89 out of 5.0",
         }
     ],
     languages:[

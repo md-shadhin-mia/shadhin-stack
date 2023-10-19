@@ -1,4 +1,6 @@
 import {Text, View, StyleSheet} from "@react-pdf/renderer";
+import Heading from "./components/Heading";
+import data from "../../data";
 
 const style = StyleSheet.create({
     text: {
@@ -19,22 +21,22 @@ const style = StyleSheet.create({
     bulletPoint: {
         fontSize: 11,
         marginBottom: 5,
-        marginRight:"5",
+        marginRight:"2",
         flexWrap:"wrap",
         flexDirection:"column",
         fontFamily: "Lato",
+        alignItems:"flex-end",
+        paddingLeft:"18"
     }
 })
 function Sidebar(){
 
     return <View style={{padding:4}}>
         <View style={style.title}>
-            <Text style={style.text}>Sidebar Experiences & Skill</Text>
+            <Heading size="h6">Sidebar Experiences & Skill</Heading>
         </View>
         <View style={style.bulletPoint}>
-            <Text style={style.text}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consequuntur cupiditate
-                deleniti dicta et fugiat harum, iusto maiores nihil nisi officia pariatur praesentium
-                provident quo reprehenderit sunt ullam, voluptatem voluptatum!</Text>
+            {data.skills.map((skill, index)=>(<Text>{skill}</Text>))}
         </View>
     </View>
 }

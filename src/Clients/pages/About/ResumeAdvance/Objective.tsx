@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from "@react-pdf/renderer";
 import {ReactIcon} from "./index.tsx";
 import {FaCode, FaHome} from "react-icons/fa";
 import Heading from "./components/Heading.tsx";
+import data from "../../data.tsx";
 
 
 const styles = StyleSheet.create({
@@ -39,10 +40,10 @@ function Objective(){
     return (
         <View style={{width:"100%"}}>
             <View style={styles.subheader}>
-               <Heading size={"h2"} icon={FaHome}> Objective</Heading>
+               <Heading size={"h3"} icon={FaHome}> Objective</Heading>
             </View>
             <Text style={styles.text}>
-                Dedicated and highly skilled Backend Developer with [X] years of experience in Java development. Adept at designing, implementing, and maintaining robust and scalable server-side applications. Seeking an opportunity to contribute my expertise in Java and backend development to a dynamic and innovative team.
+                {data.objective}
             </Text>
         </View>
     )
