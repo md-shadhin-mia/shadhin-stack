@@ -2,8 +2,10 @@ const data ={
     name:"Md Shadhin Mia",
     email:"mshadhinkn@gmail.com",
     title:"Software Engineer",
-    phone:"0130-2591377",
-    address:"Dhaka, Bangladesh",
+    phone:"+880130-2591377",
+    address:"Shewrapara, Mirpur-1216, Bangladesh",
+    linkin:"https://www.linkedin.com/in/mdshadhinkn",
+    github:"https://github.com/md-shadhin-mia",
     coverImage: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     objective:"To obtain a software engineer position that allows me to utilize my strong coding skills Java and Javascript to develop high-quality web applications that meet the client’s needs and expectations.",
     skills:[
@@ -30,7 +32,7 @@ const data ={
             company:"Smart Software Limited",
             from:"May 1 2023",
             to:"Continue",
-            responsibilities:"As a Software Engineer at Smart Software, I specialized in ERP (Enterprise Resource Planning) software development. My role involved designing, customizing, and integrating ERP solutions, collaborating with cross-functional teams to meet client requirements. I excelled in database design, optimizing system performance, and ensuring a seamless user interface. I conducted rigorous quality assurance, documented technical details, and worked closely with clients to provide ongoing support."
+            responsibilities:"As a Software Engineer at Smart Software, I specialized in ERP (Enterprise Resource Planning) software development. My role involved designing, customizing, and integrating ERP solutions, collaborating with cross-functional teams to meet client requirements. I excelled in database design, optimizing system performance, and ensuring a seamless user interface. I worked closely with clients to provide ongoing support."
         },
         {
             title: "Software Engineer",
@@ -70,7 +72,9 @@ const data ={
 
         }
     ],
-    activity:""
+    activity:
+        "Open-Source Contribution, "+
+        "Participate in coding challenges and competitions",
 }
 
 export default data;

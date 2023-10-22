@@ -3,6 +3,7 @@ import {ReactIcon} from "./index.tsx";
 import {FaCode, FaHome} from "react-icons/fa";
 import Heading from "./components/Heading.tsx";
 import data from "../../data.tsx";
+import Paragraph from "./components/Paragraph.tsx";
 
 
 const styles = StyleSheet.create({
@@ -40,11 +41,9 @@ function Objective(){
     return (
         <View style={{width:"100%"}}>
             <View style={styles.subheader}>
-               <Heading size={"h3"} icon={FaHome}> Objective</Heading>
+               <Heading size={"h4"} icon={FaHome}> Objective</Heading>
             </View>
-            <Text style={styles.text}>
-                {data.objective}
-            </Text>
+            <Paragraph>{data.objective}</Paragraph>
         </View>
     )
 }

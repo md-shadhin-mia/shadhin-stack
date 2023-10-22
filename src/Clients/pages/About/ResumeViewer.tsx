@@ -1,5 +1,5 @@
 import {FileTextOutlined} from "@ant-design/icons";
-import ReactPDF, {PDFViewer} from "@react-pdf/renderer";
+import ReactPDF, {PDFDownloadLink, PDFViewer} from "@react-pdf/renderer";
 import {Button, ButtonProps, Modal} from "antd";
 import React, {ReactElement, useState} from "react";
 import DocumentProps = ReactPDF.DocumentProps;
@@ -14,6 +14,7 @@ function ResumeViewer(props: Props) {
     const [open, setOpen] = useState<boolean>(!!props.defaultOpen);
     return (
         <>
+
             <Button type="default" icon={<FileTextOutlined />} {...props.button} onClick={()=>setOpen(true)}>
                 {props.label}
             </Button>
@@ -25,12 +26,23 @@ function ResumeViewer(props: Props) {
                     onCancel={() => setOpen(false)}
                     width={"100%"}
                     zIndex={10000}
+                    footer={[
+                        <Button key="back" onClick={() => setOpen(false)} style={{margin:"10px"}}>Close</Button>,
+                        <PDFDownloadLink document={props.children} fileName="md-shadhin-mia.pdf">
+                            {({ blob, url, loading, error }) =>
+                                 <Button type="primary" loading={loading} onClick={() => setOpen(false)}>
+                                    Download
+                                </Button>
+                            }
+                        </PDFDownloadLink>
+                    ]}
                 >
                     <div style={{height:"80vh"}}>
                         <PDFViewer style={{width:"100%", height:"100%"}} >
                             {props.children}
                         </PDFViewer>
                     </div>
+
                 </Modal>
         </>
     )

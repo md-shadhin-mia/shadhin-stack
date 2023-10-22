@@ -1,6 +1,5 @@
 import {StyleSheet, Text, View} from "@react-pdf/renderer";
 import {ReactIcon} from "./index.tsx";
-import {FaCode} from "react-icons/fa";
 import {IoIosSchool} from "react-icons/io";
 import Heading from "./components/Heading.tsx";
 import data from "../../data.tsx";
@@ -10,18 +9,18 @@ const styles = StyleSheet.create({
     subheader: {
         fontSize: 13,
         padding: 4,
-        marginBottom: 5,
+        marginBottom: 2,
         fontWeight: "bold",
         borderBottom:"1 solid #61dbfb",
         marginRight:"5"
     },
     timelineContainer: {
         flexDirection: 'row',
-        marginBottom: 20,
+        marginBottom: 4,
     },
     timelineIcon: {
         fontSize: 11,
-        marginRight: 18,
+        marginRight: 16,
         marginLeft:-5,
     },
     timelineContent: {
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 11,
-        marginBottom: 5,
+        marginBottom: 2,
     },
 });
 
@@ -64,9 +63,10 @@ function Education(){
                             <ReactIcon height={10} width={10} icon={IoIosSchool} color="#000000" backgroundColor="#fff" />
                         </Text>
                         <View style={styles.timelineContent}>
-                            <Text style={styles.text}>
-                                {education.degree} at {education.institution}
-                            </Text>
+                            <View style={{flexDirection:"row"}}>
+                                <Heading size={"h5"}>{education.degree} | </Heading>
+                                <Heading size={"d5"}>{education.institution}</Heading>
+                            </View>
                             <Text style={styles.text}>{education.from} - {education.to}</Text>
                             <Text style={styles.text}>GPA: {education.gpa}</Text>
                         </View>

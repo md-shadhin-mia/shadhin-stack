@@ -4,6 +4,7 @@ import {RiRadioButtonLine} from "react-icons/ri";
 import {IoBriefcase} from "react-icons/io5";
 import Heading from "./components/Heading.tsx";
 import data from "../../data.tsx";
+import Paragraph from "./components/Paragraph.tsx";
 
 
 const styles = StyleSheet.create({
@@ -17,11 +18,11 @@ const styles = StyleSheet.create({
     },
     timelineContainer: {
         flexDirection: 'row',
-        marginBottom: 8,
+        marginBottom: 4,
     },
     timelineIcon: {
         fontSize: 11,
-        marginRight: 18,
+        marginRight: 16,
         marginLeft:-5,
     },
     timelineContent: {
@@ -67,11 +68,11 @@ function Experince(){
                     </Text>
                     <View style={styles.timelineContent}>
                         <View style={{flexDirection:"row"}}>
-                            <Heading size="h6" >{experience.title} | </Heading>
-                            <Heading size="d6" >{experience.company} </Heading>
+                            <Heading size="h5" >{experience.title} | </Heading>
+                            <Heading size="d5" >{experience.company} </Heading>
                         </View>
                         <Text style={styles.text}>{experience.from} - {experience.to}</Text>
-                        <Text style={styles.text}>{experience.responsibilities}</Text>
+                        <Paragraph >{experience.responsibilities}</Paragraph>
                     </View>
                 </View>
             ))}</View>

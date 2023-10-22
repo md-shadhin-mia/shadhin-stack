@@ -9,7 +9,7 @@ function Main(){
         <View style={{marginLeft:20}}>
             <Objective />
             <Experince />
-            <Projects />
+            {/*<Projects />*/}
             <Education/>
         </View>
     )

@@ -1,29 +1,32 @@
 // @flow
 import {ElementType, ReactNode} from "react";
-import {Text, StyleSheet, View} from "@react-pdf/renderer";
+import ReactPDF, {Text, StyleSheet, View} from "@react-pdf/renderer";
 import {ReactIcon} from "../index.tsx";
+import Styles = ReactPDF.Styles;
 
 type Props = {
+    style?: Styles;
     children: ReactNode;
     size:'h1'|'h2'|'h3'|'h4'|'h5'|'h6'|'d1'|'d2'|'d3'|'d4'|'d5'|'d6';
     icon?:ElementType;
+
 };
 //font size for h1, h2, h3, h4, h5, h6, d1, d2, d3, d4, d5, d6
 const fontSizes: Record<string, number> = {
     '1': 30,
-    '2': 24,
-    '3': 20,
-    '4': 16,
-    '5': 14,
-    '6': 12,
+    '2': 22,
+    '3': 16,
+    '4': 12,
+    '5': 11,
+    '6': 8.25,
 }
 const  iconSizes: Record<string, number> = {
     '1': 28,
-    '2': 22,
-    '3': 18,
-    '4': 14,
-    '5': 12,
-    '6': 10
+    '2': 20,
+    '3': 14,
+    '4': 10,
+    '5': 10,
+    '6': 8,
 }
 function Heading(props: Props) {
     const styles = StyleSheet.create({
@@ -38,7 +41,8 @@ function Heading(props: Props) {
             alignItems:"center",
             justifyContent:"center",
             borderRadius:5,
-        }
+        },
+        ...props.style
     })
     return (
         <View style={{flexDirection:"row", alignItems:"center"}}>

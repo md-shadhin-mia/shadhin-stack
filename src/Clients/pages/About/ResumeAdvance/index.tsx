@@ -71,8 +71,14 @@ Font.register({
 });
 // Create Document Component
 const MyDocument = () => (
-    <Document>
-        <Page size="A4" style={styles.page}>
+    <Document
+    keywords="Software Engineer"
+    title="Md Shadhin Mia"
+    author="mdshadhinkn@gmail.com"
+    subject="Software Engineer"
+    >
+
+        <Page size="A4" style={styles.page} wrap>
             <View fixed render={(page)=>{
                 return page.pageNumber ==1?<Text></Text>:<Text style={{marginBottom:30}}></Text>
             }} />
