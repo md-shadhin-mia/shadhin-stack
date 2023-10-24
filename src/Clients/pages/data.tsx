@@ -1,6 +1,6 @@
 const data ={
     name:"Md Shadhin Mia",
-    email:"mshadhinkn@gmail.com",
+    email:"mdshadhinkn@gmail.com",
     title:"Software Engineer",
     phone:"+880130-2591377",
     address:"Shewrapara, Mirpur-1216, Bangladesh",
